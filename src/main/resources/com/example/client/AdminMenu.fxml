@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4B0082;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controllers.AdminMenuController">
+    <children>
+        <AnchorPane layoutY="88.0" prefHeight="312.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
+            <children>
+                <Button fx:id="usersManagementButton" layoutX="224.0" layoutY="26.0" mnemonicParsing="false" onAction="#userControl" prefHeight="34.0" prefWidth="149.0" text="Users Management" />
+                <Label layoutX="227.0" layoutY="86.0">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+                <Button fx:id="ordersViewButton" layoutX="224.0" layoutY="86.0" mnemonicParsing="false" onAction="#orderView" prefHeight="34.0" prefWidth="150.0" text="Orders View" />
+                <Button fx:id="productsViewButton" layoutX="224.0" layoutY="146.0" mnemonicParsing="false" onAction="#productView" prefHeight="34.0" prefWidth="150.0" text="Products View" />
+                <Button fx:id="earnViewButton" layoutX="224.0" layoutY="206.0" mnemonicParsing="false" onAction="#earnedView" prefHeight="34.0" prefWidth="150.0" text="View Earned Money" />
+            <Button fx:id="returnButton" mnemonicParsing="false" text="&lt;-" />
+            <Button fx:id="banButton" layoutX="225.0" layoutY="263.0" mnemonicParsing="false" onAction="#banControl" prefHeight="34.0" prefWidth="150.0" text="Ban Some One" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="149.0" layoutY="21.0" text="Admin Menu" textFill="WHITE">
+            <font>
+                <Font name="Bank Gothic Medium BT" size="46.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

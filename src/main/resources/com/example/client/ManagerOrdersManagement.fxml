@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4B0082;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.controllers.ManagerOrdersManagementController">
+    <children>
+        <AnchorPane layoutY="88.0" prefHeight="312.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
+            <children>
+                <Label layoutX="227.0" layoutY="86.0">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+                <Button fx:id="viewOrderButton" layoutX="224.0" layoutY="86.0" mnemonicParsing="false" onAction="#viewOrders" prefHeight="34.0" prefWidth="150.0" text="View Orders" />
+                <Button fx:id="sentOrderButton" layoutX="224.0" layoutY="156.0" mnemonicParsing="false" onAction="#sentOrder" prefHeight="34.0" prefWidth="150.0" text="Sent Orders" />
+                <Button fx:id="returnButton" mnemonicParsing="false" text="&lt;-" />
+            </children>
+        </AnchorPane>
+
+        <Label layoutX="111.0" layoutY="20.0" text="Orders Management" textFill="WHITE">
+            <font>
+                <Font name="Bank Gothic Medium BT" size="46.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

@@ -19,7 +19,8 @@
                 <Button fx:id="productsViewButton" layoutX="224.0" layoutY="146.0" mnemonicParsing="false" onAction="#productView" prefHeight="34.0" prefWidth="150.0" text="Products View" />
                 <Button fx:id="earnViewButton" layoutX="224.0" layoutY="206.0" mnemonicParsing="false" onAction="#earnedView" prefHeight="34.0" prefWidth="150.0" text="View Earned Money" />
             <Button fx:id="returnButton" mnemonicParsing="false" text="&lt;-" />
-            <Button fx:id="banButton" layoutX="225.0" layoutY="263.0" mnemonicParsing="false" onAction="#banControl" prefHeight="34.0" prefWidth="150.0" text="Ban Some One" />
+                <Button fx:id="chartButton" layoutX="400.0" layoutY="263.0" mnemonicParsing="false" onAction="#chart" prefHeight="34.0" prefWidth="150.0" text="Chart" />
+            <Button fx:id="banButton" layoutX="224.0" layoutY="263.0" mnemonicParsing="false" onAction="#banControl" prefHeight="34.0" prefWidth="150.0" text="Ban Some One" />
             </children>
         </AnchorPane>
         <Label layoutX="149.0" layoutY="21.0" text="Admin Menu" textFill="WHITE">

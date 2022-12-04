@@ -1,6 +1,7 @@
 package com.example.client.controllers;
 
 import com.example.client.FarmModels.Customer;
+import com.example.client.FarmModels.Person;
 import com.example.client.FarmModels.Purchase;
 import com.example.client.Modules.Errors;
 import com.example.client.connections.Connect;
@@ -40,6 +41,8 @@ public class CustomerPaymentController {
 
     @FXML
     private Button viewPurchaseButton;
+    @FXML
+    private Button viewPurchaseHistoryButton;
 
     @FXML
     private Button orderPaymentButton;
@@ -146,6 +149,40 @@ public class CustomerPaymentController {
         stage.show();
     }
 
+    @FXML
+    void viewPurchaseHistory(ActionEvent event){
+        Gson gson = new Gson();
+        Person purchase = new Person();
+        Connect.connection.sendMessage("ViewPurchase");
+        purchase.setId(Connect.id);
+        Connect.connection.sendObject(gson.toJson(purchase));
+        String mes = "";
+        try {
+            mes = Connect.connection.readMessage();
+        } catch(IOException ex){
+            System.out.println("Error in reading");
+        }
+        if (mes.equals("No data"))
+            Errors.showAlertWithNoData();
+        else {
+            String obj = Connect.connection.readObject().toString();
+            Type fooType = new TypeToken<ArrayList<Purchase>>() {}.getType();
+            ArrayList<Purchase> r =  gson.fromJson(obj,fooType);
+            ListView<Purchase> a = new ListView<>();
+            for(Purchase p: r){
+                a.getItems().add(p);
+            }
+
+            VBox vBox = new VBox(a);
+
+            Scene scene = new Scene(vBox, 1000, 400);
+
+            Stage stage = new Stage();
+            stage.setTitle("Out Put Information");
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+    }
     @FXML
     void initialize() {
         returnButton.setOnAction(event -> {

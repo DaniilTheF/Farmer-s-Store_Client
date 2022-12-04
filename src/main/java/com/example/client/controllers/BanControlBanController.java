@@ -4,17 +4,22 @@ import com.example.client.FarmModels.Person;
 import com.example.client.Modules.Errors;
 import com.example.client.connections.Connect;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BanControlBanController {
@@ -29,6 +34,8 @@ public class BanControlBanController {
 
     @FXML
     private Button banButton;
+    @FXML
+    private Button viewAllButton;
 
     @FXML
     private Button returnButton;
@@ -73,7 +80,37 @@ public class BanControlBanController {
             }
         }
     }
+    @FXML
+    void viewAll(ActionEvent event) {
+        Gson gson = new Gson();
+        Connect.connection.sendMessage("ViewPersons");
+        String mes = "";
+        try {
+            mes = Connect.connection.readMessage();
+        } catch(IOException ex){
+            System.out.println("Error in reading");
+        }
+        if (mes.equals("No data"))
+            Errors.alertWithNoBanned();
+        else {
+            String acc = Connect.connection.readObject().toString();
+            Type fooType = new TypeToken<ArrayList<Person>>() {}.getType();
+            ArrayList<Person> r =  gson.fromJson(acc,fooType);
+            ListView<Person> a = new ListView<>();
+            for (Person p: r) {
+                a.getItems().add(p);
+            }
+            VBox vBox = new VBox(a);
 
+            Scene scene = new Scene(vBox, 1000, 400);
+
+            Stage stage = new Stage();
+            stage.setTitle("Out Put Information");
+            stage.setScene(scene);
+
+            stage.showAndWait();
+        }
+    }
     @FXML
     void initialize() {
         returnButton.setOnAction(event -> {

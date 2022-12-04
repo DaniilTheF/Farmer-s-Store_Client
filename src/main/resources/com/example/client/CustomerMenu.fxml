@@ -16,8 +16,8 @@
                     </font>
                 </Label>
                 <Button fx:id="ordersManagementButton" layoutX="225.0" layoutY="100.0" mnemonicParsing="false" onAction="#ordersManagement" prefHeight="34.0" prefWidth="150.0" text="Orders Management" />
-                <Button fx:id="viewProductsButton" layoutX="225.0" layoutY="150.0" mnemonicParsing="false"  onAction="#viewProducts" prefHeight="34.0" prefWidth="150.0" text="View Products" />
-                <Button fx:id="paymentButton" layoutX="225.0" layoutY="200.0" mnemonicParsing="false"  onAction="#paymentManagement" prefHeight="34.0" prefWidth="150.0" text="Payment Management" />
+                <Button fx:id="viewProductsButton" layoutX="225.0" layoutY="150.0" mnemonicParsing="false" onAction="#viewProducts" prefHeight="34.0" prefWidth="150.0" text="View Products" />
+                <Button fx:id="paymentButton" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#paymentManagement" prefHeight="34.0" prefWidth="150.0" text="Payment Management" />
             </children>
         </AnchorPane>
         <Label layoutX="97.0" layoutY="14.0" text="Customer Menu" textFill="WHITE">

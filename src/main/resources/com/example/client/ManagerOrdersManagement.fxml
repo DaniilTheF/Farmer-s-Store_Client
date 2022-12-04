@@ -20,7 +20,7 @@
             </children>
         </AnchorPane>
 
-        <Label layoutX="111.0" layoutY="20.0" text="Orders Management" textFill="WHITE">
+        <Label layoutX="37.0" layoutY="14.0" text="Orders Management" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Medium BT" size="46.0" />
             </font>

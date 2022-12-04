@@ -18,7 +18,8 @@
                 <Button fx:id="topUpButton" layoutX="225.0" layoutY="65.0" mnemonicParsing="false" onAction="#topUpAccount" prefHeight="34.0" prefWidth="150.0" text="Top Up Account" />
                 <Button fx:id="viewBalanceButton" layoutX="225.0" layoutY="115.0" mnemonicParsing="false" onAction="#viewBalance" prefHeight="34.0" prefWidth="150.0" text="View Balance" />
                 <Button fx:id="orderPaymentButton" layoutX="225.0" layoutY="165.0" mnemonicParsing="false" onAction="#orderPayment" prefHeight="34.0" prefWidth="150.0" text="Order Payment" />
-            <Button fx:id="viewPurchaseButton" layoutX="225.0" layoutY="213.0" mnemonicParsing="false" onAction="#viewPurchase" prefHeight="34.0" prefWidth="150.0" text="View Purchases" />
+                <Button fx:id="viewPurchaseButton" layoutX="225.0" layoutY="213.0" mnemonicParsing="false" onAction="#viewPurchase" prefHeight="34.0" prefWidth="150.0" text="View Purchases" />
+                <Button fx:id="viewPurchaseHistoryButton" layoutX="225.0" layoutY="213.0" mnemonicParsing="false" onAction="#viewPurchaseHistory" prefHeight="34.0" prefWidth="150.0" text="View Purchases History" />
             </children>
         </AnchorPane>
         <Label layoutX="57.0" layoutY="14.0" text="Customer Payment" textFill="WHITE">

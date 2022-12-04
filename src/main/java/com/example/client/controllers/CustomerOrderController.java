@@ -1,7 +1,9 @@
 package com.example.client.controllers;
 
 import com.example.client.FarmModels.Cart;
+import com.example.client.FarmModels.History;
 import com.example.client.FarmModels.Orders;
+import com.example.client.FarmModels.Person;
 import com.example.client.Modules.Errors;
 import com.example.client.connections.Connect;
 import com.google.gson.Gson;
@@ -19,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -63,6 +66,40 @@ public class CustomerOrderController {
         stage.show();
     }
 
+    @FXML
+    void historyOrder(ActionEvent event){
+        Gson gson = new Gson();
+        Connect.connection.sendMessage("ViewHistory");
+        Person person = new Person();
+        person.setId(Connect.id);
+        Connect.connection.sendObject(gson.toJson(person));
+        String mes = "";
+        try {
+            mes = Connect.connection.readMessage();
+        } catch(IOException ex){
+            System.out.println("Error in reading");
+        }
+        if (mes.equals("No data"))
+            Errors.alertWithNoOrders();
+        else {
+            String acc = Connect.connection.readObject().toString();
+            Type fooType = new TypeToken<ArrayList<History>>() {}.getType();
+            ArrayList<History> r =  gson.fromJson(acc,fooType);
+            ListView<History> a = new ListView<>();
+            for (History p: r) {
+                a.getItems().add(p);
+            }
+            VBox vBox = new VBox(a);
+
+            Scene scene = new Scene(vBox, 1000, 400);
+
+            Stage stage = new Stage();
+            stage.setTitle("Out Put Information");
+            stage.setScene(scene);
+
+            stage.showAndWait();
+        }
+    }
     @FXML
     void deleteOrder(ActionEvent event) {
         addOrderButton.getScene().getWindow().hide();

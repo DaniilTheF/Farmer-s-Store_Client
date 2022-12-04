@@ -67,7 +67,7 @@ public class ManagerOrdersManagementSentController {
                         sentButton.getScene().getWindow().hide();
 
                         FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("/com/example/client/ManagerProductManagement.fxml"));
+                        loader.setLocation(getClass().getResource("/com/example/client/ManagerOrdersManagement.fxml"));
 
                         try {
                             loader.load();
@@ -89,7 +89,7 @@ public class ManagerOrdersManagementSentController {
             returnButton.setOnAction(event -> {
                 returnButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/com/example/client/ManagerProductManagement.fxml"));
+                loader.setLocation(getClass().getResource("/com/example/client/ManagerOrdersManagement.fxml"));
 
                 try {
                     loader.load();

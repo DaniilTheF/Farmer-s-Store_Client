@@ -10,7 +10,7 @@
     <children>
         <AnchorPane layoutY="89.0" prefHeight="312.0" prefWidth="600.0" style="-fx-background-color: #FAFAFA;">
             <children>
-                <Button fx:id="sentButton" layoutX="252.0" layoutY="179.0" mnemonicParsing="false" onAction="#sentOrder" prefHeight="34.0" prefWidth="95.0" text="Delete" />
+                <Button fx:id="sentButton" layoutX="252.0" layoutY="179.0" mnemonicParsing="false" onAction="#sentOrder" prefHeight="34.0" prefWidth="95.0" text="Sent" />
                 <Label layoutX="227.0" layoutY="86.0">
                     <font>
                         <Font size="23.0" />
@@ -20,7 +20,7 @@
                 <Button fx:id="returnButton" layoutY="1.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="43.0" text="&lt;-" />
             </children>
         </AnchorPane>
-        <Label layoutX="147.0" layoutY="14.0" text="Sent Order" textFill="WHITE">
+        <Label layoutX="154.0" layoutY="14.0" text="Sent Order" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Light BT" size="46.0" />
             </font>

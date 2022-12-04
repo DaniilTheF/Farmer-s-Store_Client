@@ -19,6 +19,7 @@
                 <Button fx:id="infoAboutOrderButton" layoutX="225.0" layoutY="116.0" mnemonicParsing="false" onAction="#infoAboutOrder" prefHeight="34.0" prefWidth="149.0" text="Info about Order" />
                 <Button fx:id="viewAllOrderButton" layoutX="225.0" layoutY="162.0" mnemonicParsing="false" onAction="#viewAllOrder" prefHeight="34.0" prefWidth="149.0" text="View All Order" />
                 <Button fx:id="deleteOrderButton" layoutX="225.0" layoutY="210.0" mnemonicParsing="false" onAction="#deleteOrder" prefHeight="34.0" prefWidth="149.0" text="Delete Order" />
+                <Button fx:id="historyOrderButton" layoutX="225.0" layoutY="260.0" mnemonicParsing="false" onAction="#historyOrder" prefHeight="34.0" prefWidth="149.0" text="Order History" />
             </children>
         </AnchorPane>
         <Label layoutX="52.0" layoutY="14.0" text="Order Management" textFill="WHITE">

@@ -26,7 +26,7 @@
                 <Button fx:id="returnButton" layoutY="1.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="43.0" text="&lt;-" />
             </children>
         </AnchorPane>
-        <Label layoutX="121.0" layoutY="14.0" text="Add User" textFill="WHITE">
+        <Label layoutX="180.0" layoutY="14.0" text="Add User" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Light BT" size="46.0" />
             </font>

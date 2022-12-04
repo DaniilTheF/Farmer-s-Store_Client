@@ -24,7 +24,8 @@ public class CustomerPaymentToUpController {
 
     @FXML
     private URL location;
-
+    @FXML
+    private TextField adress;
     @FXML
     private TextField quantity;
 
@@ -40,6 +41,7 @@ public class CustomerPaymentToUpController {
             return 0;
         }
     }
+
     @FXML
     void topUpAccount(ActionEvent event) {
         Gson gson = new Gson();
@@ -53,6 +55,7 @@ public class CustomerPaymentToUpController {
                Errors.showAlertWithData();
             }
             customer.setMoney(tryParse(quantity.getText()));
+            customer.setAdress(adress.getText());
             Connect.connection.sendMessage("AddMoney");
             Connect.connection.sendObject(gson.toJson(customer));
             System.out.println("Запись отправлена");
@@ -96,7 +99,7 @@ public class CustomerPaymentToUpController {
     }
     private boolean checkInput() {
         try {
-            return quantity.getText().equals("");
+            return quantity.getText().equals("") || adress.getText().equals("");
         }
         catch (Exception e) {
             System.out.println("Error");

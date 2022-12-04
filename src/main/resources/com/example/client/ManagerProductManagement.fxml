@@ -21,7 +21,7 @@
                 <Button fx:id="deleteProductButton" layoutX="225.0" layoutY="210.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="34.0" prefWidth="149.0" text="Delete Product" />
             </children>
         </AnchorPane>
-        <Label layoutX="6.0" layoutY="14.0" text="Manager Product Management" textFill="WHITE">
+        <Label layoutX="23.0" layoutY="14.0" text="Product Management" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Medium BT" size="46.0" />
             </font>

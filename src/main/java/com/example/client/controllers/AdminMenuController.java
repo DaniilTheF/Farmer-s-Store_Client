@@ -8,11 +8,15 @@ import com.example.client.Modules.Errors;
 import com.example.client.connections.Connect;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
@@ -21,9 +25,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.*;
 
 public class AdminMenuController {
 
@@ -32,22 +34,20 @@ public class AdminMenuController {
 
     @FXML
     private URL location;
-
     @FXML
     private Button ordersViewButton;
-
     @FXML
     private Button productsViewButton;
     @FXML
     private Button earnViewButton;
-
     @FXML
     private Button usersManagementButton;
-
     @FXML
     private Button returnButton;
     @FXML
     private Button banButton;
+    @FXML
+    private Button chartButton;
 
     @FXML
     void userControl(ActionEvent event) {
@@ -69,7 +69,7 @@ public class AdminMenuController {
     @FXML
     void orderView(ActionEvent event) {
         Gson gson = new Gson();
-        Connect.connection.sendMessage("ViewOrder");
+        Connect.connection.sendMessage("ViewOrders");
         Cart cart = new Cart();
         cart.setPersonId(Connect.id);
         Connect.connection.sendObject(gson.toJson(cart));
@@ -83,8 +83,8 @@ public class AdminMenuController {
             Errors.alertWithNoOrders();
         else {
             String acc = Connect.connection.readObject().toString();
-            Type fooType = new TypeToken<Vector<Orders>>() {}.getType();
-            Vector<Orders> r =  gson.fromJson(acc,fooType);
+            Type fooType = new TypeToken<ArrayList<Orders>>() {}.getType();
+            ArrayList<Orders> r =  gson.fromJson(acc,fooType);
             ListView<Orders> a = new ListView<>();
             for (Orders p: r) {
                 a.getItems().add(p);
@@ -101,6 +101,63 @@ public class AdminMenuController {
         }
     }
     @FXML
+    void chart(ActionEvent event) {
+        Gson gson = new Gson();
+        Connect.connection.sendMessage("ViewProduct");
+        String mes = "";
+        try {
+            mes = Connect.connection.readMessage();
+        } catch(IOException ex){
+            System.out.println("Error in reading");
+        }
+        if (mes.equals("No data"))
+            Errors.showAlertWithNoProduct();
+        else {
+            String obj = Connect.connection.readObject().toString();
+            Type fooType = new TypeToken<ArrayList<Product>>() {}.getType();
+            ArrayList<Product> r =  gson.fromJson(obj,fooType);
+            Connect.connection.sendMessage("ViewCart");
+            try {
+                mes = Connect.connection.readMessage();
+            } catch(IOException ex){
+                System.out.println("Error in reading");
+            }
+            if (mes.equals("No data"))
+                Errors.showAlertWithNoProduct();
+            else {
+                String obj1 = Connect.connection.readObject().toString();
+                Type fooType1 = new TypeToken<ArrayList<Cart>>() {}.getType();
+                ArrayList<Cart> list =  gson.fromJson(obj1,fooType1);
+                ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+                Map<String,Integer> map = new HashMap<>();
+                Stage stage = new Stage();
+                Scene scene = new Scene(new Group());
+                stage.setTitle("Demand");
+                stage.setWidth(500);
+                stage.setHeight(500);
+                for(Product p: r){
+                    map.put(p.getName(),0);
+                }
+                for(Cart c: list){
+                    for (Map.Entry<String, Integer> m: map.entrySet()) {
+                        if(m.getKey().equals(c.getProductName())){
+                            m.setValue(m.getValue()+c.getAmount());
+                        }
+                    }
+                }
+                for(Map.Entry<String, Integer> m: map.entrySet()){
+                    pieChartData.add(new PieChart.Data(m.getKey(),m.getValue()));
+                }
+                final PieChart chart = new PieChart(pieChartData);
+                chart.setTitle("Demands For Products");
+
+                ((Group) scene.getRoot()).getChildren().add(chart);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
+    }
+    @FXML
     void productView(ActionEvent event) {
         Gson gson = new Gson();
         Connect.connection.sendMessage("ViewProduct");
@@ -111,7 +168,7 @@ public class AdminMenuController {
             System.out.println("Error in reading");
         }
         if (mes.equals("No data"))
-            Errors.showAlertWithNoData();
+            Errors.showAlertWithNoProduct();
         else {
             String obj = Connect.connection.readObject().toString();
             Type fooType = new TypeToken<ArrayList<Product>>() {}.getType();
@@ -142,7 +199,7 @@ public class AdminMenuController {
             System.out.println("Error in reading");
         }
         if (mes.equals("No data"))
-            Errors.showAlertWithNoData();
+            Errors.showAlertWithNoEarn();
         else {
             String obj = Connect.connection.readObject().toString();
             Type fooType = new TypeToken<ArrayList<Earned>>() {}.getType();

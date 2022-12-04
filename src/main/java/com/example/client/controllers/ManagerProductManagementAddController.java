@@ -69,7 +69,7 @@ public class ManagerProductManagementAddController {
                 } catch (IOException ex) {
                     System.out.println("Error in reading");
                 }
-                if (mes.equals("This user is already existed"))
+                if (mes.equals("This product is already existed"))
                     Errors.showAlertWithExistLogin();
                 else {
                     try {

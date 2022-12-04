@@ -21,7 +21,7 @@
                 <Button fx:id="deleteUserButton" layoutX="225.0" layoutY="210.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="34.0" prefWidth="149.0" text="Delete User" />
             </children>
         </AnchorPane>
-        <Label layoutX="6.0" layoutY="14.0" text="User Management" textFill="WHITE">
+        <Label layoutX="68.0" layoutY="14.0" text="User Management" textFill="WHITE">
             <font>
                 <Font name="Bank Gothic Medium BT" size="46.0" />
             </font>

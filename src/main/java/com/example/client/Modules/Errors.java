@@ -45,6 +45,13 @@ public class Errors {
         alert.setContentText("Сначала добавьте заказ");
         alert.showAndWait();
     }
+    static public void alertWithNoBanned(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText("Ошибка: Нет данных");
+        alert.setContentText("Сначала забаньте пользователя");
+        alert.showAndWait();
+    }
     static public void IncorrectPass(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Ошибка");
@@ -78,6 +85,20 @@ public class Errors {
         alert.setTitle("Ошибка");
         alert.setHeaderText("Ошибка: Нет данных");
         alert.setContentText("Сначала добавьте покупателя");
+        alert.showAndWait();
+    }
+    static public void showAlertWithNoEarn(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText("Ошибка: Нет данных");
+        alert.setContentText("Вы еще ничего не заработали");
+        alert.showAndWait();
+    }
+    static public void showAlertWithNoProduct(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText("Ошибка: Нет данных");
+        alert.setContentText("Вся продукция была распроданна");
         alert.showAndWait();
     }
 
